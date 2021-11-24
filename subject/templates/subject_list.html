@@ -1,0 +1,47 @@
+{% extends 'basse.html' %}
+
+
+{% block title %}
+    Subject lists
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                {% if subjects %}
+                    {% for subject in subjects %}
+                        <div class="card my-5">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <a href="{% url 'subject:book_list' subject.id %}"
+                                   class="btn btn-outline-info">{{ subject.name }}</a>
+                                </div>
+
+                                <div class="">
+                                    <a href="{% url 'subject:update_subject' subject.id %}" class="btn btn-outline-secondary">&#128394</a>
+                                  <a href="{% url 'subject:delete_subject' subject.id %}" class="btn btn-outline-danger mx-3">&#128465</a>
+                                </div>
+
+                            </div>
+
+                            <div class="card-footer">
+                                <p>Created by : {{ subject.created_by.username }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <h3>No Subject ...</h3>
+                {% endif %}
+                <div class="">
+                    <a href="{% url 'subject:create_subject' course.id %}" class="btn btn-success">Create
+                        Subject</a>
+
+                    <a href="/" class="btn btn-secondary">Back</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

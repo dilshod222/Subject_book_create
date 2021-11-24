@@ -1,0 +1,29 @@
+{% extends 'basse.html' %}
+
+
+{% block title %}
+    Create Subject
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 my-3 offset-3">
+
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="name">Name:
+
+                    </label>
+                    <input id="name" type="text" name="name" class="form-control shadow-none">
+
+                    <div>
+                        <input type="submit" value="Create subject" class="btn btn-success my-3">
+                        <a href="{% url 'subject:subject_list' course.id %}" class="btn btn-secondary">Back</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

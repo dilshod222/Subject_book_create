@@ -1,0 +1,25 @@
+{% extends 'basse.html' %}
+
+
+{% block title %}
+    Delete course
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-6">
+            <p>Are you sure to delete <b>{{ course.name }}</b> ?</p>
+
+
+            <form method="post">
+                {% csrf_token %}
+                <a href="/" class="btn btn-secondary">Back</a>
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+
+        </div>
+    </div>
+    </div>
+{% endblock %}
