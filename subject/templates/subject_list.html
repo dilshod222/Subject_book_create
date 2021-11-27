@@ -19,8 +19,10 @@
                                 </div>
 
                                 <div class="">
+                                      {% if perms.book.add_book or perms.course.add_course or perms.subject.add_subject %}
                                     <a href="{% url 'subject:update_subject' subject.id %}" class="btn btn-outline-secondary">&#128394</a>
                                   <a href="{% url 'subject:delete_subject' subject.id %}" class="btn btn-outline-danger mx-3">&#128465</a>
+                                        {% endif %}
                                 </div>
 
                             </div>
@@ -34,8 +36,10 @@
                     <h3>No Subject ...</h3>
                 {% endif %}
                 <div class="">
+                     {% if perms.subject.add_course or perms.subject.add_book or perms.subject.add_subject%}
                     <a href="{% url 'subject:create_subject' course.id %}" class="btn btn-success">Create
                         Subject</a>
+                    {% endif %}
 
                     <a href="/" class="btn btn-secondary">Back</a>
                 </div>

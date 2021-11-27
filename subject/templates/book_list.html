@@ -2,18 +2,29 @@
 
 
 {% block title %}
-    Subject lists
+    BOOK lists
 {% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="row">
-           <div class="col-6 offset-3">
+            <div class="col-6 offset-3">
                 {% if books %}
                     {% for book in books %}
                         <div class="card my-5">
-                            <div class="card-body">
-                                <p>{{ book.name }}</p>
+                            <div class="card-body d-flex justify-content-between">
+                                <div class="">
+                                    <p>{{ book.name }}</p>
+                                </div>
+
+                                <div>
+                                    {% if perms.subject.add_book or perms.subject.add_course or perms.subject.add_subject %}
+                                        <a href="{% url 'subject:update_book' book.id %}" class="btn btn-dark btn-sm">&#128394</a>
+                                        <a href="{% url 'subject:delete_book' book.id %}" class="btn btn-danger btn-sm">&#128465</a>
+                                    {% endif %}
+                                    <a download target="_blank"  href="{% url 'subject:download_book' book.generated_name %}" class="btn btn-outline-primary btn-sm">&#8681</a>
+                                </div>
+
                             </div>
 
                             <div class="card-footer">
@@ -22,9 +33,18 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <h3>No Subject ...</h3>
+                    <h3>No BOOK ...</h3>
                 {% endif %}
+
+                <div class="">
+                    {% if perms.subject.add_book or perms.subject.add_course or perms.subject.add_subject %}
+                        <a href="{% url 'subject:create_book' subject.id %}" class="btn btn-success">Create Book</a>
+                    {% endif %}
+
+                    <a href="{% url 'subject:subject_list' subject.course_id %}" class="btn btn-secondary">Back</a>
+                </div>
             </div>
+
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'basse.html' %}
+
+
+{% block title %}
+    Create Course
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6 my-3 offset-3">
+
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="book_name">Name:</label>
+                    <input id="book_name" type="text" name="name" class="form-control shadow-none">
+                     <label for="author_name">Author:</label>
+                    <input id="author_name" type="text" name="author_name" class="form-control shadow-none">
+                     <label for="file">Book File:</label>
+                    <input id="file" type="file" name="file" class="form-control shadow-none">
+
+                    <div>
+                        <input type="submit" value="Create" class="btn btn-success my-3">
+                        <a href="{% url 'subject:book_list' subject.id %}" class="btn btn-secondary">Back</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

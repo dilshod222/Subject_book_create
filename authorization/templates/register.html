@@ -1,0 +1,67 @@
+{% extends 'basse.html' %}
+
+{% block title %}
+    Sign In
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="offset-3 col-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        {% for error in form.username.errors %}
+                            <p style="color: red; font-size: 10px;font-weight: bold;">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                            <p style="color: red; font-size: 10px;font-weight: bold;">{{ error }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                </div>
+
+
+{##}
+{#                <div class="mb-3">#}
+{#                    <label for="{{ form.picture.id_for_label }}">{{ form.picture.label }}</label>#}
+{#                    {{ form.picture }}#}
+{#                     {% if form.picture.errors %}#}
+{#                        {% for error in form.picture.errors %}#}
+{#                            <p style="color: red; font-size: 10px;font-weight: bold;">{{ error }}</p>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#                </div>#}
+{##}
+
+
+                <button class="btn btn-success" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

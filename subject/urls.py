@@ -9,6 +9,10 @@ from subject.views import (
     CreateSubjectView,
     UpdateSubjectView,
     DeleteSubjectView,
+    CreateBookView,
+    UpdateBookView,
+    DeleteBookView,
+    download,
 
 )
 
@@ -23,4 +27,8 @@ urlpatterns = [
     path('create_subject/<int:pk>', CreateSubjectView.as_view(), name='create_subject'),
     path('update_subject/<int:pk>', UpdateSubjectView.as_view(), name='update_subject'),
     path('delete_subject/<int:pk>', DeleteSubjectView.as_view(), name='delete_subject'),
+    path('create_book/<int:pk>', CreateBookView.as_view(), name='create_book'),
+    path('update_book/<int:pk>', UpdateBookView.as_view(), name='update_book'),
+    path('delete_book/<int:pk>', DeleteBookView.as_view(), name='delete_book'),
+    path('download_book/<str:generated_name>', download, name='download_book'),
 ]

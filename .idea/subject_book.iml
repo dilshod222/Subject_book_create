@@ -23,6 +23,7 @@
       <list>
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/subject/templates" />
+        <option value="$MODULE_DIR$/authorization/templates" />
       </list>
     </option>
   </component>
